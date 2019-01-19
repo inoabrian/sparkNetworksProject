@@ -1,0 +1,35 @@
+{
+  "name": "profile_server",
+  "version": "1.0.0",
+  "description": "api that supports the retrieval and edit of a user's profile",
+  "main": "index.js",
+  "scripts": {
+    "dump_db": "mongo sparknetworks --eval \"printjson(db.dropDatabase())\"",
+    "seed_db": "mongoimport --db sparknetworks --collection sparkusers --file ./routes/profile/default.json",
+    "pre_start": "npm run dump_db && npm run seed_db",
+    "start": "npm run pre_start && node index.js",
+    "test": "lab --assert code --coverage -v -l"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inoabrian/sparkNetworksProject"
+  },
+  "author": "inoabrian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inoabrian/sparkNetworksProject/issues"
+  },
+  "homepage": "https://github.com/inoabrian/sparkNetworksProject#readme",
+  "dependencies": {
+    "boom": "^7.3.0",
+    "dotenv": "^6.2.0",
+    "hapi": "^17.8.1",
+    "hapi-mongodb": "^8.0.0",
+    "hapi-pino": "^5.2.0",
+    "joi": "^14.3.1"
+  },
+  "devDependencies": {
+    "code": "^5.2.4",
+    "lab": "^18.0.1"
+  }
+}
