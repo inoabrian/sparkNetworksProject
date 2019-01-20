@@ -9,8 +9,8 @@ Prerequisites:
  - Node.js >= 8
 
 Scripts:
-	npm start - Starts the server in development mode
-	npm test -  Executes tests in the ./server/test directory
+- npm start - Starts the server in development mode
+- npm test -  Executes tests in the ./server/test directory
 
 ## Technologies:
 
