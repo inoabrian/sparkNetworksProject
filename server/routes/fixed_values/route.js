@@ -1,20 +1,15 @@
-let cities                  = require('./cities.json');
-let singleChoiceAttributes  = require('./single_choice_attributes.json');
+const FixedValueController = require('../../controllers/fixed_values/controller');
 
 let cityLocationInformation = {
     method: 'GET', 
     path: '/en/locations',
-    handler: function (request, h) {
-        return (cities);
-    }
+    handler: FixedValueController.cities.get
 };
 
 let singleChoiceAttributeInformation = {
     method: 'GET', 
     path: '/en/attributes',
-    handler: function (request, h) {
-        return (singleChoiceAttributes);
-    }
+    handler: FixedValueController.choices.get
 };
 
 module.exports = [
