@@ -8,7 +8,7 @@
     "seed_db": "mongoimport --db sparknetworks --collection sparkusers --file ./routes/profile/default.json",
     "pre_start": "npm run dump_db && npm run seed_db",
     "start": "npm run pre_start && node index.js",
-    "test": "lab --assert code --coverage -v -l"
+    "test": "npm run pre_start && lab --assert code --coverage -v -l"
   },
   "repository": {
     "type": "git",
