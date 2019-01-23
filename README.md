@@ -10,7 +10,7 @@ Prerequisites:
  - Mongo DB 
  - Node.js >= 8
 
-#Install Dependencies
+## Install Dependencies
 Execute npm install in the client directory to install dependencies.
 
 Scripts:
@@ -34,7 +34,7 @@ Prerequisites:
  - Angular CLI 
  - Node.js >= 8
 
-#Install Dependencies
+## Install Dependencies
 Execute npm install in the client directory to install dependencies.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
