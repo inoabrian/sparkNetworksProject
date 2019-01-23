@@ -7,9 +7,7 @@ module.exports.get = async (request, h) => {
     const userId = request.params.userId ? encodeURIComponent(request.params.userId) : null;
 
     try {
-        const result = await db
-            .collection('sparkusers')
-            .findOne({ "userId": userId }, { _id: 0 });
+        const result = await db.collection('sparkusers').findOne({ "userId": userId }, { "_id" : 0 });
 
         if (result === null) {
             return h.response("Not Found")
@@ -45,6 +43,7 @@ module.exports.patch = async (request, h) => {
         // update the user object with the patch object's values
         let updatedUser = Object.assign(user, patchObject);
 
+        // Update the changes in the database
         await db.collection('sparkusers').updateOne({ "userId": userId }, { $set: updatedUser });
     }
     catch (err) {

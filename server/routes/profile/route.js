@@ -7,6 +7,7 @@ const defaultProfile = {
     path: '/profile/{userId}',
     handler: ProfileController.get,
     options: {
+        cors: true,
         validate: {
             params: {
                 userId: Joi.string().required()
@@ -20,6 +21,7 @@ const updateProfile = {
     path: '/profile/{userId}',
     handler: ProfileController.patch,
     options: {
+        cors: true,
         validate: {
             params: {
                 userId: Joi.string().required()
