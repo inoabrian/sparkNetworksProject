@@ -10,7 +10,7 @@ Prerequisites:
  - Mongo DB 
  - Node.js >= 8
 
-#Install Dependencies
+## Install Dependencies
 Execute npm install in the client directory to install dependencies.
 
 Scripts:
@@ -34,7 +34,7 @@ Prerequisites:
  - Angular CLI 
  - Node.js >= 8
 
-#Install Dependencies
+## Install Dependencies
 Execute npm install in the client directory to install dependencies.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
@@ -46,4 +46,11 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests
+<<<<<<< HEAD
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+=======
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+>>>>>>> 9f874bd2f07faedcc8cff20ffb1965c04570be33
