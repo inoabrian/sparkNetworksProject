@@ -1,0 +1,29 @@
+<div class="container-fluid">
+
+  <!-- REST OF INFORMATION -->
+  <div class="row">
+
+    <div *ngFor="let pInfo of detailedPersonalInformation.personalInformation" class="col-sm-6">
+      <div class="row mgbt-xs-0">
+        <label class="col-xs-5 control-label">{{pInfo.label}}:</label>
+        <div class="col-xs-7 controls">{{pInfo.value}}</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ABOUT ME -->
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="font-semibold">
+        About Me:
+      </h4>
+    </div>
+    <div class="col-sm-12">
+      <p>
+        {{detailedPersonalInformation.aboutInformation}}
+      </p>
+    </div>
+  </div>
+
+</div>

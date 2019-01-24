@@ -1,0 +1,23 @@
+<div *ngIf="loadingProfile === true" class="row text-center">
+  <div class="logo">Loading Profile...</div>
+</div>
+
+<div *ngIf="errorLoadingProfile === true" class="row text-center">
+  <div class="logo">Loading Profile...</div>
+</div>
+
+<div *ngIf="loadingProfile === false && errorLoadingProfile === false">
+  <div class="col-sm-3">
+
+    <div class="panel">
+
+      <div class="panel-body">
+
+        <app-image-upload [image]="getProfilePicture()" (imageUpdated)="handleImageUpdate($event)"></app-image-upload>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

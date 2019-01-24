@@ -1,0 +1,83 @@
+<div *ngIf="loadingProfile === true" class="row text-center">
+  <div class="logo">Loading Profile...</div>
+</div>
+
+<div *ngIf="errorLoadingProfile === true" class="row text-center">
+  <div class="logo">Loading Profile...</div>
+</div>
+
+<div *ngIf="loadingProfile === false && errorLoadingProfile === false">
+
+  <div class="clearfix">
+
+    <div class="row">
+
+      <!-- EDIT BUTTON SECTION -->
+      <div class="col-sm-12 push-down-20">
+        <div class="pull-right">
+          <a class="btn btn-xs" routerLink="/profile/edit">
+            <i class="fa fa-pencil append-icon"></i> Edit
+          </a>
+        </div>
+      </div>
+
+      <!-- LEFT SIDE PANEL -->
+      <div class="col-sm-3">
+
+        <div class="panel">
+
+          <div class="panel-body">
+
+            <!-- IMAGE -->
+            <div class="row">
+              <div class="text-center push-down-20">
+                <img class="user-image" alt="profile image" [src]="getProfilePicture()">
+              </div>
+            </div>
+
+            <!-- DISPLAY NAME AND OCCUPATION -->
+            <div class="row push-down-20">
+
+              <div class="text-center push-down-20">
+                <h3>
+                  {{profile.display_name}}
+                </h3>
+                <h4>
+                  {{profile.occupation}}
+                </h4>
+              </div>
+
+              <div class="text-center">
+                <label class="col-xs-12 control-label">
+                  Gender: {{profile.gender}}
+                </label>
+              </div>
+
+            </div>
+
+            <!-- LOCATION -->
+            <div class="row">
+              <div class="text-center">
+                <h3>
+                  <span class="fa fa-map-marker">
+                    <i style="padding-right: 10px;"></i>{{getLocationText()}}</span>
+                </h3>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT MAIN SIDE PANEL -->
+      <div class="col-sm-9 personal-information">
+        <app-person-information-list [personal_information]="getPersonalInformationList()"></app-person-information-list>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

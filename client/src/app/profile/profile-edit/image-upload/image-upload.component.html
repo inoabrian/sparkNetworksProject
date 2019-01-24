@@ -1,0 +1,20 @@
+<!-- IMAGE -->
+<div class="col-xs-12">
+  <div class="row text-center ">
+    
+    <div class="col-xs-12 push-down-20">
+      <img class="img-thumbnail user-image" alt="profile image" [src]="profile_image">
+    </div>
+
+    <div class="col-xs-12">
+      <div class="btn btn-default btn-block" (click)="clickImageInput()">
+        <span class="fa fa-upload"></span> Update Image
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row text-center">
+    <input #imageInput class="form-control hidden" id="file-upload" type="file" accept="image/*" (change)="processImageChange(imageInput)">
+  </div>
+</div>

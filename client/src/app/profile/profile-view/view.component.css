@@ -1,0 +1,59 @@
+.user-image {
+    height: 200px;
+}
+
+.main-display {
+    display: flex;
+    position: inherit;
+}
+
+.main-right-display { 
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.main-left-display {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.display_name {
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 1.33333;
+    display: inline;
+}
+
+.personal-information {
+    display: flex;
+    height: 400px;
+}
+
+:host ::ng-deep app-person-information-list {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.panel {
+    border-radius: 0px;
+}
+
+.push-down-20 { 
+    margin-bottom: 20px;
+}
+
+.push-down-40 { 
+    margin-bottom: 40px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0 0 10px;
+    font-weight: normal;
+    font-family: 'Open Sans','arial';
+    color: inherit;
+    text-rendering: optimizelegibility
+}
+
+img {
+    max-width: 100%
+}
