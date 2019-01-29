@@ -30,8 +30,8 @@
 }
 
 :host ::ng-deep app-person-information-list {
-    margin-top: auto;
-    margin-bottom: auto;
+    /* margin-top: auto;
+    margin-bottom: auto; */
 }
 
 .panel {

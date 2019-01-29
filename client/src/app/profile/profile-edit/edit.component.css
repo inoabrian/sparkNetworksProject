@@ -1,3 +1,37 @@
 .user-image {
     height: 200px;
 }
+
+#about_me {
+    min-height: 150px;
+}
+
+.form {
+    min-width: 150px;
+    width: 100%;
+}
+  
+.full-width {
+    width: 100%;
+}
+
+.mat-form-field .mat-hint {
+    display: none;
+}
+
+.mat-form-field-invalid .mat-hint {
+    display: block;
+}
+
+.radio-group {
+    display: inline-flex;
+    margin-left: 10px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+}
+
+label > span {
+    font-size: x-small;
+}

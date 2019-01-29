@@ -3,6 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ViewComponent } from './view.component';
 import { PersonInformationListComponent } from './person-information-list/person-information-list.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('ViewComponent', () => {
   let component: ViewComponent;
@@ -16,7 +17,8 @@ describe('ViewComponent', () => {
       imports: [
         HttpClientTestingModule
       ],
-      declarations: [ ViewComponent, PersonInformationListComponent ]
+      declarations: [ ViewComponent, PersonInformationListComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

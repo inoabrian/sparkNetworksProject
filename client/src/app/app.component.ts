@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DefaultsService } from './services/defaults/defaults.service';
-import { ProfileService } from './services/profile/profile.service';
+import { DefaultsService } from 'src/app/services/defaults/defaults.service';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 import * as RxJS  from 'rxjs';
 
 
@@ -16,9 +16,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   this.loadDefaultApplicationValues();
+  }
+
+  loadDefaultApplicationValues() {
     this.defaultService.getDefaults().subscribe(
       (data) => {
-        console.log(data);
+        this.defaultService.cachedDefaults = data;
       },
       (err) => {
         console.warn(err);
@@ -30,7 +34,7 @@ export class AppComponent implements OnInit {
 
     this.defaultService.getCities().subscribe(
       (data) => {
-        console.log(data);
+        this.defaultService.cachedCities = data;
       },
       (err) => {
         console.warn(err);

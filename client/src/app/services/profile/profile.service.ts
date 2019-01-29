@@ -32,11 +32,11 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-  getProfile() {
-    return this.http.get<Profile>('http://localhost:8000/profile/1');
+  getProfile(id?: string) {
+    return this.http.get<Profile>(`http://localhost:8000/profile/${ id === undefined ? 1 : id }`);
   }
 
-  updateProfile() {
-    return this.http.patch<Profile>('http://localhost:8000/profile/1', JSON.stringify({"display_name": "Default"}));
+  updateProfile(id: string, patchObject: Profile) {
+    return this.http.patch<Profile>(`http://localhost:8000/profile/${id}`, JSON.stringify(patchObject));
   }
 }

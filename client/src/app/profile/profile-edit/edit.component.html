@@ -1,23 +1,172 @@
-<div *ngIf="loadingProfile === true" class="row text-center">
-  <div class="logo">Loading Profile...</div>
-</div>
-
 <div *ngIf="errorLoadingProfile === true" class="row text-center">
-  <div class="logo">Loading Profile...</div>
+  <div class="logo">Error Profile...</div>
 </div>
 
 <div *ngIf="loadingProfile === false && errorLoadingProfile === false">
-  <div class="col-sm-3">
 
-    <div class="panel">
+  <div class="row">
 
-      <div class="panel-body">
+    <!-- BUTTON TO RETURN TO VIEW -->
+    <div class="col-md-12 mt-5">
+      <div class="pull-right">
+        <h4 routerLink="/profile">
+          <!-- <span class="fa fa-reply"></span> -->
+          <button mat-mini-fab aria-label="Return Home">
+            <mat-icon aria-label="Return Home">reply</mat-icon>
+          </button>
+        </h4>
+      </div>
+    </div>
 
-        <app-image-upload [image]="getProfilePicture()" (imageUpdated)="handleImageUpdate($event)"></app-image-upload>
+    <!-- IMAGE UPLOAD COMPONENT -->
+    <div class="col-lg-4 col-12-offset-4 col-md-12 col-sm-12 col-md-offset-4 mb-5">
+      <app-image-upload [image]="getProfilePicture()" (imageUpdated)="handleImageUpdate($event)"></app-image-upload>
+    </div>
+
+    <div class="col-lg-8 col-md-offset-2 col-md-12 col-sm-12 col-md-offset-2">
+
+      <div class="form" [formGroup]="profileForm" (ngSubmit)="updateProfileInformation()">
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <mat-form-field class="full-width">
+              <label for="display_name">Display Name</label>
+              <input matInput type="text" id="display_name" formControlName="display_name">
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+              <mat-hint align="start">Required* Must only be up to 256 chars.</mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 mb-3">
+            <mat-form-field class="full-width">
+              <label for="real_name">Real name <span class="text-muted">(will not be displayed)</span></label>
+              <input matInput type="text" id="real_name" formControlName="real_name">
+              <mat-hint align="start">Required* Must only be up to 256 chars.</mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <mat-form-field class="full-width">
+              <label for="birthday">Birthday</label>
+              <input matInput [matDatepicker]="picker" id="birthday" formControlName="birthday">
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-hint align="start">Required*</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <mat-form-field class="full-width">
+              <label for="occupation">Occupation <span class="text-muted">(will not be displayed)</span></label>
+              <input matInput type="text" id="occupation" formControlName="occupation">
+              <mat-hint align="start">Must only be up to 256 chars.</mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <mat-form-field class="full-width">
+              <label for="about_me">About Me</label>
+              <textarea matInput type="text" id="about_me" formControlName="about_me"></textarea>
+              <mat-hint align="start">Must only be up to 5000 chars.</mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-5">
+            <label for="gender">Gender
+              <mat-radio-group class="radio-group" id="gender" formControlName="gender">
+                <mat-radio-button class="radio-button" *ngFor="let gender of defaultOptions.gender" [value]="gender.id">
+                  {{gender.name}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-5">
+            <label for="ethnicity">Ethnicity
+              <mat-select id="ethnicity" formControlName="ethnicity">
+                <mat-option *ngFor="let ethnicity of defaultOptions.ethnicity" [value]="ethnicity.id">
+                  {{ethnicity.name}}
+                </mat-option>
+              </mat-select>
+            </label>
+          </div>
+
+          <div class="col-md-6 mb-5">
+            <label for="religion">Religion
+              <mat-select id="religion" formControlName="religion">
+                <mat-option *ngFor="let religion of defaultOptions.religion" [value]="religion.id">
+                  {{religion.name}}
+                </mat-option>
+              </mat-select>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-5">
+            <label for="figure">Figure
+              <mat-select id="figure" formControlName="figure">
+                <mat-option *ngFor="let figure of defaultOptions.figure" [value]="figure.id">
+                  {{figure.name}}
+                </mat-option>
+              </mat-select>
+            </label>
+          </div>
+
+
+          <div class="col-md-6 mb-5">
+            <label for="figure">Marital Status <span class="text-muted">(will not be displayed)</span>
+              <mat-select id="marital_status" formControlName="marital_status">
+                <mat-option *ngFor="let marital_status of defaultOptions.marital_status" [value]="marital_status.id">
+                  {{marital_status.name}}
+                </mat-option>
+              </mat-select>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-5">
+            <mat-form-field class="full-width">
+              <label>Location</label>
+              <input type="text" aria-label="Location" matInput formControlName="location" [matAutocomplete]="auto">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="mapValueToCity">
+                <mat-option *ngFor="let location of filteredLocationOptions | async" [value]="{'lat':location.lat, 'lon': location.lon}">
+                  {{location.city}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-hint align="start">Required*</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6 mb-5">
+            <mat-form-field class="full-width">
+              <label for="height">Height <span class="text-muted">(cannot update)</span></label>
+              <input matInput type="text" id="height" formControlName="height" disabled>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-md-12 text-right">
+            <button mat-stroked-button color="warn" (click)="resetForm()">Reset</button>
+            <button mat-stroked-button [disabled]="!this.profileForm.valid" (click)="updateProfileInformation()">Save</button>
+          </div>
+        </div>
 
       </div>
 
     </div>
 
   </div>
+
 </div>

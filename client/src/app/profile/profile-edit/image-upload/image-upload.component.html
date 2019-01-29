@@ -1,15 +1,15 @@
-<!-- IMAGE -->
 <div class="col-xs-12">
   <div class="row text-center ">
-    
+
     <div class="col-xs-12 push-down-20">
       <img class="img-thumbnail user-image" alt="profile image" [src]="profile_image">
     </div>
 
     <div class="col-xs-12">
-      <div class="btn btn-default btn-block" (click)="clickImageInput()">
-        <span class="fa fa-upload"></span> Update Image
-      </div>
+      <button mat-stroked-button (click)="clickImageInput()">
+        <mat-icon aria-label="Update Image">folder</mat-icon>
+        Update Image
+      </button>
     </div>
 
   </div>

@@ -1,3 +1,7 @@
 .container-fluid > .row {
     margin: 10px 0px;
 }
+
+.full-width {
+    width: 100%;
+}

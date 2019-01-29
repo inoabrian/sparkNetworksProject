@@ -50,24 +50,46 @@ export interface Cities {
 })
 export class DefaultsService {
   cachedCities: Cities;
+  cacheTime: Date;
   cachedDefaults: Defaults;
-  constructor(private http: HttpClient) { }
 
-  getCities(): Observable<any> {
-    if(this.cachedCities !== undefined)
-      return from([this.cachedCities]);
-      
-    this.http.get<Cities>('http://localhost:8000/en/locations').subscribe((data) => {this.cachedCities = data});
-
-    return from([this.cachedCities]);
+  constructor(private http: HttpClient) { 
+    this.cacheTime = new Date();
   }
 
-  getDefaults(): Observable<any> {
-    if(this.cachedDefaults !== undefined)
+  /*
+    Service to serve our default cities and fixed values data
+
+    Note:
+    I decided to implement a cache feature for our default data since it does not change
+  */
+  getCities() {
+    let currentTime = new Date();
+    if(this.cachedCities !== undefined && !this.cacheExpired())
+      return from([this.cachedCities]);
+      
+    return this.http.get<Cities>('http://localhost:8000/en/locations');
+  }
+
+  getDefaults() {
+    if(this.cachedDefaults !== undefined && !this.cacheExpired())
       return from([this.cachedDefaults]);
 
-    this.http.get<Defaults>('http://localhost:8000/en/attributes');
+    return this.http.get<Defaults>('http://localhost:8000/en/attributes');
+  }
+
+  private cacheExpired(): boolean {
+    let currentTime = new Date();
+
+    let expired = (+currentTime - +this.cacheTime) < 5000;
     
-    return from([this.cachedDefaults]);
+    if(expired)
+      this.resetCacheTime();
+
+    return expired;
+  }
+
+  private resetCacheTime() {
+    this.cacheTime = new Date();
   }
 }
