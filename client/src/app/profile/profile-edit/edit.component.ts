@@ -107,7 +107,7 @@ export class EditComponent implements OnInit {
       this.profileService.updateProfile(this.profile.userId, this.profileForm.value)
         .subscribe(
           (data)=> {
-            this.navigateToProfile();
+            console.log(data);
           },
           this.handleError
         );
