@@ -1,29 +1,25 @@
-<div class="container-fluid">
-
-  <!-- REST OF INFORMATION -->
-  <div class="row text-center ">
-
+<!-- REST OF INFORMATION -->
+<div class="row text-center ">
+  <div class="col-sm-12">
     <div *ngFor="let pInfo of detailedPersonalInformation.personalInformation" class="col-sm-6 mb-3">
       <mat-form-field class="full-width">
         <label class="control-label">{{pInfo.label}}</label>
         <input matInput type="text" [value]="pInfo.value" [disabled]="true">
       </mat-form-field>
     </div>
-
   </div>
+</div>
 
-  <!-- ABOUT ME -->
-  <div class="row">
-    <div class="col-sm-12">
-      <h4 class="font-semibold">
-        <b>About Me:</b>
-      </h4>
-    </div>
-    <div class="col-sm-12">
-      <p>
-        {{detailedPersonalInformation.aboutInformation}}
-      </p>
-    </div>
+<!-- ABOUT ME -->
+<div class="row">
+  <div class="col-sm-12">
+    <h4 class="font-semibold">
+      <b>About Me:</b>
+    </h4>
   </div>
-
+  <div class="col-sm-12">
+    <p>
+      {{detailedPersonalInformation.aboutInformation}}
+    </p>
+  </div>
 </div>

@@ -24,16 +24,6 @@
     display: inline;
 }
 
-.personal-information {
-    display: flex;
-    height: 400px;
-}
-
-:host ::ng-deep app-person-information-list {
-    /* margin-top: auto;
-    margin-bottom: auto; */
-}
-
 .panel {
     border-radius: 0px;
 }
