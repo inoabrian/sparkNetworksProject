@@ -1,4 +1,4 @@
-{
+[{
     "userId": "1",
     "display_name": "Display Name",
     "real_name": "Real Name",
@@ -16,4 +16,4 @@
         "lat": "40°40'N",
         "lon": "73°56'W"
     }
-}
+}]
