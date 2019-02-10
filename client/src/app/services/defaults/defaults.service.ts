@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, from } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface Gender {
   id: string;
@@ -68,14 +69,14 @@ export class DefaultsService {
     if(this.cachedCities !== undefined && !this.cacheExpired())
       return from([this.cachedCities]);
       
-    return this.http.get<Cities>('http://localhost:8000/en/locations');
+    return this.http.get<Cities>(`${environment.baseURL}/en/locations`);
   }
 
   getDefaults() {
     if(this.cachedDefaults !== undefined && !this.cacheExpired())
       return from([this.cachedDefaults]);
 
-    return this.http.get<Defaults>('http://localhost:8000/en/attributes');
+    return this.http.get<Defaults>(`${environment.baseURL}/en/attributes`);
   }
 
   private cacheExpired(): boolean {

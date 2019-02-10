@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 export interface Location {
     lat: string;
@@ -33,10 +34,10 @@ export class ProfileService {
   constructor(private http: HttpClient) { }
 
   getProfile(id?: string) {
-    return this.http.get<Profile>(`http://localhost:8000/profile/${ id === undefined ? 1 : id }`);
+    return this.http.get<Profile>(`${environment.baseURL}/profile/${ id === undefined ? 1 : id }`);
   }
 
   updateProfile(id: string, patchObject: Profile) {
-    return this.http.patch<Profile>(`http://localhost:8000/profile/${id}`, JSON.stringify(patchObject));
+    return this.http.patch<Profile>(`${environment.baseURL}/profile/${id}`, JSON.stringify(patchObject));
   }
 }
